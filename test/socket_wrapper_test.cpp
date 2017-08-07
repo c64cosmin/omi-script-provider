@@ -9,6 +9,7 @@
 #include <socket_wrapper.hpp>
 #include <sys/socket.h>
 #include <unistd.h>
+#include <cstring>
 
 
 using test::socket_wrapper_test;

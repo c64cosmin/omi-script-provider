@@ -2,7 +2,6 @@
 // Licensed under the MIT license.
 #include "test_helper.hpp"
 
-
 #include <iostream>
 
 

@@ -15,6 +15,7 @@
 #include <iostream>
 #include <set>
 #include <sstream>
+#include <algorithm>
 
 
 namespace
