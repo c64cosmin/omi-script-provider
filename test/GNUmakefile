@@ -7,6 +7,7 @@ MKDEP:=-MD
 
 
 TOP?=$(shell cd ../..; pwd)
+START?=$(shell pwd)
 OMI_OUTPUT_DIR:=$(TOP)/omi/Unix/output
 
 
@@ -14,8 +15,8 @@ include $(OMI_OUTPUT_DIR)/omi.mak
 include $(OMI_OUTPUT_DIR)/config.mak
 
 
-BIN_PATH:=$(TOP)/scriptprovider/bin
-OBJ_PATH:=$(TOP)/scriptprovider/obj
+BIN_PATH:=$(START)/bin
+OBJ_PATH:=$(START)/obj
 
 
 EXECUTABLE:=test
@@ -25,7 +26,7 @@ $(BIN_PATH)/$(EXECUTABLE) :
 
 
 INCLUDE_PATH+=$(INCDIR)
-INCLUDE_PATH+=$(TOP)/scriptprovider/provider
+INCLUDE_PATH+=$(START)/provider
 INCLUDE_PATH+=$(SRCDIR)
 INCLUDE_PATH+=$(SRCDIR)/common
 

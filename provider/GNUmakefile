@@ -7,14 +7,15 @@ MKDEP:=-MD
 
 
 TOP?=$(shell cd ../..; pwd)
+START?=$(shell pwd)
 
 
 include $(TOP)/omi/Unix/output/omi.mak
 include $(TOP)/omi/Unix/output/config.mak
 
 
-BIN_PATH:=$(TOP)/scriptprovider/bin
-OBJ_PATH:=$(TOP)/scriptprovider/obj
+BIN_PATH:=$(START)/bin
+OBJ_PATH:=$(START)/obj
 
 
 PROVIDER=OMIScriptProvider

@@ -7,6 +7,7 @@ MKDEP:=-MD
 
 
 TOP?=$(shell cd ../..; pwd)
+START?=$(shell pwd)
 OMI_OUTPUT_DIR:=$(TOP)/omi/Unix/output
 
 
@@ -18,8 +19,8 @@ GEN_OUTPUT_DIR:=$(OMI_OUTPUT_DIR)/obj/gen
 GEN_SOURCE_DIR:=$(SRCDIR)/gen
 
 
-BIN_PATH:=$(TOP)/scriptprovider/bin
-OBJ_PATH:=$(TOP)/scriptprovider/obj
+BIN_PATH:=$(START)/bin
+OBJ_PATH:=$(START)/obj
 
 
 EXECUTABLE:=omigen_py

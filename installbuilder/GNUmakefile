@@ -1,8 +1,9 @@
 TOP?=$(shell cd ../..; pwd)
+START?=$(shell pwd)
 
-STAGING_DIR:=$(TOP)/scriptprovider/staging
-INTERMEDIATE_DIR:=$(TOP)/scriptprovider/intermediate
-RELEASE_DIR:=$(TOP)/scriptprovider/release
+STAGING_DIR:=$(START)/staging
+INTERMEDIATE_DIR:=$(START)/intermediate
+RELEASE_DIR:=$(START)/release
 
 IB_DIR:=$(TOP)/pal/installer/InstallBuilder
 
@@ -36,7 +37,7 @@ all:
 		$(RELEASE_DIR)/*.rpm
 	mkdir -p $(RELEASE_DIR) $(STAGING_DIR) $(INTERMEDIATE_DIR)
 	python $(IB_DIR)/installbuilder.py \
-		--BASE_DIR=$(TOP)/scriptprovider \
+		--BASE_DIR=$(START)\
 		--TARGET_DIR=$(RELEASE_DIR) \
 		--INTERMEDIATE_DIR=$(INTERMEDIATE_DIR) \
 		--STAGING_DIR=$(STAGING_DIR) \
@@ -54,14 +55,14 @@ all:
 		--DESCRIPTION="$(DESCRIPTION)" \
 		--RUN_AS_USER="$(RUN_AS_USER)" \
 		--OUTPUTFILE=$(SHORT_NAME)-$(CONFIG_VERSION)-$(OMI_SCRIPTPROVIDER_VERSION_BUILD).ssl_$(SSL_VERSION).$(PF_ARCH) \
-		--DATAFILE_PATH="$(TOP)/scriptprovider/installbuilder" \
+		--DATAFILE_PATH="$(START)/installbuilder" \
 		Base_OMIScriptProvider.data
 
 	@echo "========================= Make DSC installer"
 	sudo rm -rf $(STAGING_DIR) $(INTERMEDIATE_DIR) 
 	mkdir -p $(RELEASE_DIR) $(STAGING_DIR) $(INTERMEDIATE_DIR)
 	python $(IB_DIR)/installbuilder.py \
-		--BASE_DIR=$(TOP)/scriptprovider \
+		--BASE_DIR=$(START) \
 		--TARGET_DIR=$(RELEASE_DIR) \
 		--INTERMEDIATE_DIR=$(INTERMEDIATE_DIR) \
 		--STAGING_DIR=$(STAGING_DIR) \
@@ -80,5 +81,5 @@ all:
 		--RUN_AS_USER="$(RUN_AS_USER)" \
 		--OUTPUTFILE=$(SHORT_NAME)-$(CONFIG_VERSION)-$(OMI_SCRIPTPROVIDER_VERSION_BUILD).ssl_$(SSL_VERSION).$(PF_ARCH) \
 		$(DPKG_LOCATION) \
-		--DATAFILE_PATH="$(TOP)/scriptprovider/installbuilder" \
+		--DATAFILE_PATH="$(START)/installbuilder" \
 		Base_OMIScriptProvider.data
